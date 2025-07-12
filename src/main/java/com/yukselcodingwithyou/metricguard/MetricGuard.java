@@ -17,7 +17,7 @@ import com.yukselcodingwithyou.metricguard.MetricBackend;
  * </p>
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE})
 public @interface MetricGuard {
     /** Backend to export metrics to. */
     MetricBackend backend() default MetricBackend.PROMETHEUS;
