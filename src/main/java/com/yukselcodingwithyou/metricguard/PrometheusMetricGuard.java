@@ -12,7 +12,7 @@ import org.springframework.core.annotation.AliasFor;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@MetricGuard(backend = MetricBackend.PROMETHEUS)
+@MetricGuard(backend = MetricBackend.PROMETHEUS, tags = {})
 public @interface PrometheusMetricGuard {
     /**
      * Additional tags in key=value form. This attribute is required and is

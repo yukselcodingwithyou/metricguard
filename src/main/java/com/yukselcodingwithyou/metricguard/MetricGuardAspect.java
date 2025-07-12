@@ -15,7 +15,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -47,7 +47,7 @@ public class MetricGuardAspect {
 
     @Around("callAt()")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
-        MetricGuard metricGuard = AnnotationUtils.findMergedAnnotation(
+        MetricGuard metricGuard = AnnotatedElementUtils.findMergedAnnotation(
                 ((MethodSignature) pjp.getSignature()).getMethod(), MetricGuard.class);
         if (metricGuard == null) {
             return pjp.proceed();

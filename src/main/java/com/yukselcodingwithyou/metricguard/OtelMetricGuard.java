@@ -15,7 +15,7 @@ import com.yukselcodingwithyou.metricguard.MetricGuard;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@MetricGuard(backend = MetricBackend.OTEL)
+@MetricGuard(backend = MetricBackend.OTEL, tags = {})
 public @interface OtelMetricGuard {
     /**
      * Additional tags in key=value form. This attribute is required and is
