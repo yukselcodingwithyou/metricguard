@@ -48,8 +48,9 @@ When `headers` are specified, the current HTTP request is inspected and the head
 
 ## Continuous Integration
 
-The repository includes a simple GitHub Actions workflow that runs the Maven
-tests on every push and pull request to the `main` branch.
+The repository includes GitHub Actions workflows. All pushes and pull
+requests on `main` run the Maven tests. A separate workflow publishes the
+library when a tag beginning with `v` is pushed.
 
 ## Building and Installing
 
@@ -89,9 +90,5 @@ git commit -am "Release 1.0.0"
 git tag v1.0.0
 git push --follow-tags
 ```
-
-Finally, build and deploy the artifact to your repository:
-
-```bash
-mvn clean deploy
-```
+The push of the tag starts the `Release` workflow which builds the
+project and deploys it to GitHub Packages using the generated version.
