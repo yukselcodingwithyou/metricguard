@@ -46,12 +46,6 @@ public void updateProfile(User user) {
 Any `BusinessException` or other exception thrown from the method will increment the `metricguard_errors` counter with tags including a `type` of `business` or `system`.
 When `headers` are specified, the current HTTP request is inspected and the header values are attached as tags. If no headers are configured, the request is not accessed at all.
 
-## Continuous Integration
-
-The repository includes GitHub Actions workflows. All pushes and pull
-requests on `main` run the Maven tests. A separate workflow publishes the
-library when a tag beginning with `v` is pushed.
-
 ## Building and Installing
 
 After merging your changes to `main`, build and install the library to your
@@ -74,21 +68,3 @@ You can then reference the snapshot version from other projects:
 Publish the artifact to your preferred Maven repository when ready for a
 release.
 
-### Creating a Release Version
-
-When your changes on `main` are stable, update the version in `pom.xml` to a
-non-SNAPSHOT value. You can do this manually or with the Maven Versions Plugin:
-
-```bash
-mvn versions:set -DnewVersion=1.0.0
-```
-
-Commit the change and create a matching Git tag:
-
-```bash
-git commit -am "Release 1.0.0"
-git tag v1.0.0
-git push --follow-tags
-```
-The push of the tag starts the `Release` workflow which builds the
-project and deploys it to GitHub Packages using the generated version.
